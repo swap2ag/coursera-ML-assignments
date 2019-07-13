@@ -50,7 +50,11 @@ X = [ones(m, 1) X];
 %
 
 
-
+for classLabel = 1:num_labels
+    fprintf("Calculating optimal theta for class = %d\n",classLabel)
+    theta = fmincg(@(t) (lrCostFunction(t,X,(y==classLabel),lambda)),all_theta(classLabel,:)');
+    all_theta(classLabel,:) = theta';
+end
 
 
 

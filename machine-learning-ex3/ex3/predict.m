@@ -22,13 +22,15 @@ p = zeros(size(X, 1), 1);
 %
 
 
+%% Add 1 as the first feature for every training example
+X = [ones(m,1), X];
 
-
-
-
-
-
-
+%% Obtain output of first layer
+y1 = sigmoid((X*Theta1')); % m x h
+y1 = [ones(size(y1,1),1),y1]; % m x (h+1)
+%%  Obtain output of second layer
+y2 = sigmoid(y1 * Theta2');
+[~,p] = max(y2,[],2);
 % =========================================================================
 
 
